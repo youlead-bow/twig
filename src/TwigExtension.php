@@ -7,11 +7,11 @@ declare(strict_types=1);
  * @license Apache-2.0
  */
 
-namespace youleadbow\twig\Extension;
+namespace Youleadbow\Twig;
 
 use Twig\Extension\AbstractExtension;
-use youleadbow\twig\Parser\IncludeDirTokenParser;
-use youleadbow\twig\Parser\SwitchTokenParser;
+use Youleadbow\Twig\Parser\IncludeDirTokenParser;
+use Youleadbow\Twig\Parser\SwitchTokenParser;
 
 class TwigExtension extends AbstractExtension
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types = 1);
 
-namespace youleadbow\twig\Parser;
+namespace Youleadbow\Twig\Parser;
 
 use Twig\Error\SyntaxError;
 use Twig\Node\Node;
 use Twig\Token;
 use Twig\TokenParser\AbstractTokenParser;
-use youleadbow\twig\Node\IncludeDirNode;
+use Youleadbow\Twig\Node\IncludeDirNode;
 
 /**
  * Class IncludeDirTokenParser

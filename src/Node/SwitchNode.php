@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @license Apache-2.0
  */
 
-namespace youleadbow\twig\Node;
+namespace Youleadbow\Twig\Node;
 
 use Twig\Compiler;
 use Twig\Node\Node;

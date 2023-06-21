@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace youleadbow\twig\Node;
+namespace Youleadbow\Twig\Node;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;

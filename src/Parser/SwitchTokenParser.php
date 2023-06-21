@@ -7,13 +7,13 @@ declare(strict_types=1);
  * @license Apache-2.0
  */
 
-namespace youleadbow\twig\Parser;
+namespace Youleadbow\Twig\Parser;
 
 use Twig\Error\SyntaxError;
 use Twig\Node\Node;
 use Twig\Token;
 use Twig\TokenParser\AbstractTokenParser;
-use youleadbow\twig\Node\SwitchNode;
+use Youleadbow\Twig\Node\SwitchNode;
 
 /**
  * Based on rejected Twig pull request: https://github.com/twigphp/Twig/pull/185

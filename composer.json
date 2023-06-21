@@ -15,12 +15,12 @@
     },
     "autoload": {
         "psr-4": {
-            "youleadbow\\twig\\": "src"
+            "Youleadbow\\Twig\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "youleadbow\\twig\\Tests\\": "tests"
+            "Youleadbow\\Twig\\Tests\\": "tests"
         }
     },
     "require-dev": {
