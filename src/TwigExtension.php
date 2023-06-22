@@ -12,6 +12,7 @@ namespace Youleadbow\Twig;
 use Twig\Extension\AbstractExtension;
 use Youleadbow\Twig\Parser\IncludeDirTokenParser;
 use Youleadbow\Twig\Parser\SwitchTokenParser;
+use Youleadbow\Twig\Parser\UseDirTokenParser;
 
 class TwigExtension extends AbstractExtension
 {
@@ -19,6 +20,7 @@ class TwigExtension extends AbstractExtension
     {
         return [
             new IncludeDirTokenParser(),
+            new UseDirTokenParser(),
             new SwitchTokenParser()
         ];
     }

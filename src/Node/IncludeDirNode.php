@@ -4,10 +4,6 @@ declare(strict_types = 1);
 
 namespace Youleadbow\Twig\Node;
 
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
-use RecursiveRegexIterator;
-use RegexIterator;
 use Twig\Compiler;
 use Twig\Error\LoaderError;
 use Twig\Loader\FilesystemLoader;
@@ -16,6 +12,7 @@ use Twig\Node\Expression\ConstantExpression;
 use Twig\Node\IncludeNode;
 use Twig\Node\Node;
 use Twig\Node\NodeOutputInterface;
+use Youleadbow\Twig\Util;
 
 /**
  * Class IncludeDirNode
@@ -57,44 +54,7 @@ class IncludeDirNode extends Node implements NodeOutputInterface
     {
         $loader = $compiler->getEnvironment()->getLoader();
 
-        if (!$loader instanceof FilesystemLoader) {
-            throw new LoaderError('IncludeDir is only supported for filesystem loader!');
-        }
-
-        $includePath = '';
-        $loaderPath  = '';
-        foreach ($loader->getPaths() as $path) {
-            if (is_dir($path . $this->getNode('expr')->getAttribute('value'))) {
-                $includePath = $path . $this->getNode('expr')->getAttribute('value');
-                $loaderPath  = $path;
-            }
-        }
-
-        if (empty($includePath)) {
-            throw new LoaderError(
-                sprintf(
-                    'Unable to find template "%s" (looked into: %s).',
-                    $this->getNode('expr')->getAttribute('value'),
-                    implode(', ', $loader->getPaths())
-                )
-            );
-        }
-
-        if ($this->getAttribute('recursive')) {
-            $directory = new RecursiveDirectoryIterator($includePath);
-            $iterator = new RecursiveIteratorIterator($directory);
-            $foundFiles = new RegexIterator($iterator, '/^.+\.twig$/i', RecursiveRegexIterator::GET_MATCH);
-
-            $files = [];
-            foreach ($foundFiles as $file) {
-                $files[] = $file[0];
-            }
-        } else {
-            $files = glob($includePath . '/*.twig');
-        }
-
-        sort($files);
-
+        list($loaderPath, $files) = Util::getFileList($loader, $this->getNode('expr')->getAttribute('value'), $this->getAttribute('recursive'));
         foreach ($files as $file) {
             $file = str_replace(DIRECTORY_SEPARATOR, '/', str_replace($loaderPath, '', $file));
             $template = new IncludeNode(
