@@ -4,16 +4,13 @@ declare(strict_types = 1);
 
 namespace Youleadbow\Twig\Parser;
 
-use Twig\Compiler;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\SyntaxError;
 use Twig\Node\Expression\ConstantExpression;
-use Twig\Node\IncludeNode;
 use Twig\Node\Node;
 use Twig\Token;
 use Twig\TokenParser\AbstractTokenParser;
-use Youleadbow\Twig\Node\UseDirNode;
 use Youleadbow\Twig\Util;
 
 /**
