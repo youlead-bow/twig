@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Youleadbow\Twig;
 
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Youleadbow\Twig\Parser\IncludeDirTokenParser;
 use Youleadbow\Twig\Parser\SwitchTokenParser;
@@ -16,11 +17,15 @@ use Youleadbow\Twig\Parser\UseDirTokenParser;
 
 class TwigExtension extends AbstractExtension
 {
+    public function __construct(private readonly Environment $environment)
+    {
+    }
+
     public function getTokenParsers(): array
     {
         return [
             new IncludeDirTokenParser(),
-            new UseDirTokenParser(),
+            new UseDirTokenParser($this->environment),
             new SwitchTokenParser()
         ];
     }
