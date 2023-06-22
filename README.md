@@ -1,8 +1,8 @@
 # Twig extensions
 
+Provides a {% switch %} tag for Twig switch case statements.  
 Provides a {% includeDir %} tag for Twig  
 Provides a {% useDir %} tag for Twig  
-Provides a {% switch %} tag for Twig switch case statements.  
 
 ## 1. switch
 
