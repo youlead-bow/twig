@@ -26,9 +26,10 @@ class Util
 
         $includePath = '';
         $loaderPath  = '';
+
         foreach ($loader->getPaths() as $path) {
-            if (is_dir($path . $directory)) {
-                $includePath = $path . $directory;
+            if (is_dir($path . DIRECTORY_SEPARATOR . $directory)) {
+                $includePath = $path . DIRECTORY_SEPARATOR . $directory;
                 $loaderPath  = $path;
             }
         }
@@ -44,7 +45,7 @@ class Util
         }
 
         if ($recursive) {
-            $directoryIterator = new RecursiveDirectoryIterator($directory);
+            $directoryIterator = new RecursiveDirectoryIterator($includePath);
             $iterator = new RecursiveIteratorIterator($directoryIterator);
             $foundFiles = new RegexIterator($iterator, '/^.+\.twig$/i', RegexIterator::GET_MATCH);
 
@@ -53,7 +54,7 @@ class Util
                 $files[] = $file[0];
             }
         } else {
-            $files = glob($directory . '/*.twig');
+            $files = glob($includePath . '/*.twig');
         }
 
         sort($files);
