@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace Youleadbow\Twig\Node;
 
+use Twig\Attribute\YieldReady;
 use Twig\Compiler;
 use Twig\Node\Node;
 
 /**
  * Based on rejected Twig pull request: https://github.com/twigphp/Twig/pull/185
  */
+#[YieldReady]
 class SwitchNode extends Node
 {
     public function compile(Compiler $compiler): void

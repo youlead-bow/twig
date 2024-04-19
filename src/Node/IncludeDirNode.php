@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Youleadbow\Twig\Node;
 
+use Twig\Attribute\YieldReady;
 use Twig\Compiler;
 use Twig\Error\LoaderError;
-use Twig\Loader\FilesystemLoader;
 use Twig\Node\Expression\AbstractExpression;
 use Twig\Node\Expression\ConstantExpression;
 use Twig\Node\IncludeNode;
@@ -19,6 +19,7 @@ use Youleadbow\Twig\Util;
  *
  * @package TwigIncludeDir
  */
+#[YieldReady]
 class IncludeDirNode extends Node implements NodeOutputInterface
 {
     public function __construct(
