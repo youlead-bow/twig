@@ -27,8 +27,7 @@ class IncludeDirNode extends Node implements NodeOutputInterface
         AbstractExpression $variables = null,
         bool $recursive = false,
         bool $only = false,
-        int $lineno = 0,
-        string $tag = ''
+        int $lineno = 0
     ) {
         $nodes = ['expr' => $expr];
         if (null !== $variables) {
@@ -41,8 +40,7 @@ class IncludeDirNode extends Node implements NodeOutputInterface
                 'recursive' => $recursive,
                 'only' => $only
             ],
-            $lineno,
-            $tag
+            $lineno
         );
     }
 
