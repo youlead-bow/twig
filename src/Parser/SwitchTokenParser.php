@@ -11,6 +11,7 @@ namespace Youleadbow\Twig\Parser;
 
 use Twig\Error\SyntaxError;
 use Twig\Node\Node;
+use Twig\Node\Nodes;
 use Twig\Token;
 use Twig\TokenParser\AbstractTokenParser;
 use Youleadbow\Twig\Node\SwitchNode;
@@ -66,8 +67,8 @@ class SwitchTokenParser extends AbstractTokenParser
                     }
                     $stream->expect(Token::BLOCK_END_TYPE);
                     $body = $this->parser->subparse([$this, 'decideIfFork']);
-                    $cases[] = new Node([
-                        'values' => new Node($values),
+                    $cases[] = new Nodes([
+                        'values' => new Nodes($values),
                         'body' => $body
                     ]);
                     break;
@@ -89,7 +90,7 @@ class SwitchTokenParser extends AbstractTokenParser
             }
         }
 
-        $nodes['cases'] = new Node($cases);
+        $nodes['cases'] = new Nodes($cases);
 
         $stream->expect(Token::BLOCK_END_TYPE);
 
