@@ -7,8 +7,10 @@ namespace Youleadbow\Twig\Parser;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\SyntaxError;
+use Twig\Node\EmptyNode;
 use Twig\Node\Expression\ConstantExpression;
 use Twig\Node\Node;
+use Twig\Node\Nodes;
 use Twig\Token;
 use Twig\TokenParser\AbstractTokenParser;
 use Youleadbow\Twig\Util;
@@ -54,10 +56,10 @@ class UseDirTokenParser extends AbstractTokenParser
         foreach ($files as $file) {
             $file = str_replace(DIRECTORY_SEPARATOR, '/', str_replace($loaderPath, '', $file));
             $template = new ConstantExpression($file, 0);
-            $this->parser->addTrait(new Node(['template' => $template, 'targets' => new Node()]));
+            $this->parser->addTrait(new Nodes(['template' => $template, 'targets' => new EmptyNode()]));
         }
 
-        return new Node();
+        return new EmptyNode();
     }
 
     /**
