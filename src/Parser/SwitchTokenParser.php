@@ -38,7 +38,7 @@ class SwitchTokenParser extends AbstractTokenParser
         $stream->expect(Token::BLOCK_END_TYPE);
 
         // There can be some whitespace between the {% switch %} and first {% case %} tag.
-        while ($stream->getCurrent()->getType() === Token::TEXT_TYPE &&
+        while ($stream->getCurrent()->toEnglish() === 'text' &&
             trim($stream->getCurrent()->getValue()) === ''
         ) {
             $stream->next();
