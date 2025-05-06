@@ -28,7 +28,7 @@ class IncludeDirTokenParser extends AbstractTokenParser
      */
     public function parse(Token $token): IncludeDirNode
     {
-        $expr = $this->parser->getExpressionParser()->parseExpression();
+        $expr = $this->parser->parseExpression();
 
         list($recursive, $variables, $only) = $this->parseArguments();
 
@@ -58,7 +58,7 @@ class IncludeDirTokenParser extends AbstractTokenParser
 
         $variables = null;
         if ($stream->nextIf(Token::NAME_TYPE, 'with')) {
-            $variables = $this->parser->getExpressionParser()->parseExpression();
+            $variables = $this->parser->parseExpression();
         }
 
         $only = false;

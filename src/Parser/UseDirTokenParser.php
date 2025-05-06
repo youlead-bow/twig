@@ -37,7 +37,7 @@ class UseDirTokenParser extends AbstractTokenParser
      */
     public function parse(Token $token): Node
     {
-        $expr = $this->parser->getExpressionParser()->parseExpression();
+        $expr = $this->parser->parseExpression();
         $stream = $this->parser->getStream();
 
         if (!$expr instanceof ConstantExpression) {
